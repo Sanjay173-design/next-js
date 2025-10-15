@@ -1,0 +1,42 @@
+ name: Bulid NextJs app
+
+ on: 
+  push: 
+    branches: [ main ]
+
+ jobs:
+   buildNextJS:
+    runs-on: ubuntu-latest
+
+    steps:
+     - name: checkout
+       uses: actions/checkout@v5.0.0
+
+     - name: setup NodeJs
+       uses: actions/setup-node@v6.0.0
+       with:
+         node-version: 22.x
+         cache: 'npm'
+
+     - name: install dependencies
+       run: npm install
+
+     - name: build NextJs app
+       run: npm run build
+
+     - name: artichrafts
+       uses: actions/upload-artifact@v4.6.2
+       with:
+         name: nextjs-build
+         path: out/
+     
+       
+       
+       
+
+         
+         
+     
+     
+ 
+     
